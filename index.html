@@ -1,0 +1,1978 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文成县企业云管家-ERP-MES-WMS-数字化工厂</title>
+<!-- Stylesheets -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<!--<link href="css/color.css" rel="stylesheet">-->
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+
+    <style>
+        @media only screen and (max-width: 479px) {
+            .main-header .main-box .logo-box {
+                padding: 10px 0 !important;
+                margin-bottom: 5px !important;
+            }
+            .bannerTxtView .bannerTxt1 {
+                font-size: 1.2em !important;
+                margin-bottom: 0 !important;
+            }
+            .bannerTxtView .bannerTxt2 {
+                font-size: 1em !important;
+            }
+            .footerHidden {
+                display: none;
+            }
+        }
+        .pc_imgBox{
+            display: block;
+            height: 300px;
+            width: 100%;
+            background-size: cover;
+            background-position:  center;
+            background-repeat: no-repeat;
+        }
+        .m_imgBox{
+            display: block;
+            height: 140px;
+            width: 100%;
+            background-size: cover;
+            background-position:  center;
+            background-repeat: no-repeat;
+        }
+        /*.m_imgBox img{*/
+        /*height: 100% !important;*/
+        /*}*/
+        .bannerTxtView {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .bannerTxtView .bannerTxtBox {
+            position: relative;
+            max-width: 1200px;
+            height: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+        .bannerTxtView .noBannerTxtBoxBackGround {
+            position: absolute;
+            top: 2em;
+            left: 0;
+            padding: 0 2em 1em 2em;
+        }
+        .bannerTxtView .bannerTxtBoxBackGround {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0,-50%);
+            padding: 0 2em 1em 2em;
+            background-color: rgba(51,51,51,.7);
+            transition: opacity 0.7s;
+        }
+
+        .isShow {
+            opacity: 1;
+        }
+        .noShow {
+            opacity: 0;
+        }
+
+        .bannerTxtView p {
+            color: #ffffff;
+        }
+        .bannerTxtView .bannerTxt1 {
+            font-size: 3em;
+            margin-bottom: 0.6em;
+        }
+        .bannerTxtView .bannerTxt2 {
+            font-size: 1.5em;
+        }
+        .market-block-four .inner-box .lower-content {
+            cursor: pointer;
+        }
+        .market-block-four .inner-box .lower-content h3 {
+            color: #020e28;
+        }
+        .market-block-four .inner-box:hover .lower-content h3 {
+            color: #ffffff;
+        }
+        .isHide {
+            display: none;
+        }
+        .product-details .product-details-content {
+            overflow: hidden;
+        }
+        .product-details .product-details-content .product-details-content-title {
+            color: #000000;
+        }
+        .product-details .product-details-content .product-details-content-view-title {
+            color: #000000;
+            text-align: center;
+            margin-top: 26px;
+            margin-bottom: 12px;
+        }
+        .product-details .product-details-content .product-details-content-view-detail .details-content {
+            padding: 2%;
+
+        }
+        .product-details .product-details-content .product-details-content-view-detail .details-content li{
+            margin-bottom: 1%;
+        }
+        .product-details .product-details-content .product-details-content-view-detail .details-content-text {
+            color: #848484;
+            font-size: 16px;
+            padding-left: 6px;
+        }
+        .cellView .cellBox {
+            padding: 2%;
+            float: left;
+            width: 33.3%;
+        }
+        .product-details-btn-title {
+            margin-bottom: 20px;
+            color: #0b0b0b;
+        }
+        .product-details-btn-list .product-details-btns {
+            margin-bottom: 10px;
+        }
+        .product-details-btn-list .product-details-btns a{
+            color: #848484;
+            font-weight: 300;
+            font-size: 18px;
+        }
+        .product-details-btn-list .product-details-btns a:hover{
+            color: #0d8ee9;
+            font-weight: 600;
+        }
+        .product-details-btn-list .isCurrent a{
+            color: #0d8ee9;
+            font-weight: 600;
+        }
+
+        .details-enter {
+            transform: translateY(20px);
+        }
+        .details-enter, .details-leave-to {
+            opacity: 0;
+        }
+        .details-enter-active {
+            transition: all 0.8s ease;
+        }
+
+        .details-view-enter {
+            transform: translateY(20px);
+        }
+        .details-view-enter, .details-view-leave-to {
+            opacity: 0;
+        }
+        .details-view-enter-active {
+            transition: all 0.8s ease;
+        }
+
+
+
+
+
+        .banner-enter, .banner-leave-to {
+            opacity: 0.5;
+        }
+        .banner-enter-active {
+            transition: all 0.5s ease;
+        }
+
+        .banner-txt-enter .bannerTxtBox {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        .banner-txt-to .bannerTxtBox {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .banner-txt-active .bannerTxtBox {
+            transition: all 1s ease;
+        }
+
+        .fixedFooter {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .logoStyle {
+            font-size: 30px;
+        }
+        .logoStyle:hover {
+            color: #0d8ee9;
+            font-weight: 500;
+        }
+        .customBtnStyle {
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color:rgb(0,112,192);
+            border-radius: 0;
+        }
+        .tagTitleStyle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            font-size: 30px;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+        .deecoopLink {
+            color: #ffffff;
+            font-size: 20px;
+        }
+        .deecoopLink:hover {
+            color: #a0a0a0;
+        }
+        /*.copyright div a {*/
+        /*text-decoration: none !important;*/
+        /*cursor: pointer !important;*/
+        /*color: #0d8ee9 !important;*/
+        /*}*/
+
+        .main-header,.sticky-header {
+            background-color: transparent;
+            background-image: url(./images/background.jpg);
+            background-repeat: no-repeat;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+        }
+
+        .main-menu .navigation > li:after{
+            background-color:#0d8ee9;
+        }
+
+        .main-menu .navigation > li:before{
+            background-color:#0d8ee9;
+        }
+        .main-menu .navigation > li > a {
+            color: #000000;
+        }
+        .main-menu .navigation > li > ul {
+            border-bottom: 2px solid #0d8ee9;
+        }
+        .main-menu .navigation > li:hover > a, .main-menu .navigation > li.current > a {
+            color:#0d8ee9;
+        }
+
+        .market-block-four .inner-box:hover .lower-content{
+            background-color:#0d8ee9;
+            border-color:#0d8ee9;
+        }
+        .scroll-to-top {
+            border: 2px solid #0d8ee9;
+            background: #0d8ee9;
+        }
+        .scroll-to-top:hover {
+            color: #0d8ee9;
+        }
+        .sec-title .separator:before {
+            background-color: #0d8ee9;
+        }
+        .sec-title .separator:after {
+            background-color: #0d8ee9;
+        }
+        .main-menu .navbar-header .navbar-toggle {
+            background: #0d8ee9;
+            border: 1px solid #0d8ee9;
+        }
+        .main-header .sticky-header .main-menu .navigation > li {
+            padding: 17px 0;
+            margin-left: 32px;
+        }
+        .sticky-header .main-menu .navigation > li > a {
+            padding: 20px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="page-wrapper" id="app">
+
+    <!-- Preloader -->
+    <div class="preloader"></div>
+
+    <!-- Main Header-->
+    <header class="main-header">
+
+        <!-- Main Box -->
+        <div class="main-box">
+            <div class="auto-container">
+                <div class="outer-container clearfix">
+                    <!--Logo Box-->
+                    <div class="logo-box" style="padding: 15px 0 0 0">
+                        <div class="logo"><a><img src="images/wencheng%20logo.png" alt="" style="width: 300px;"></a></div>
+                    </div>
+
+                    <!--Nav Outer-->
+                    <div class="nav-outer clearfix">
+
+                        <!-- Main Menu -->
+                        <nav class="main-menu">
+                            <div class="navbar-header">
+                                <!-- Toggle Button -->
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+
+                            <div class="navbar-collapse collapse clearfix">
+                                <ul class="navigation clearfix">
+                                    <li :class="{current:setCurrent(0)}"><a @click="navbar(0)">首页</a></li>
+                                    <li class="dropdown" :class="{current:setCurrent(1)}">
+                                        <a @click="navbar('1-1')">企业云管家</a>
+                                        <ul>
+                                            <li><a @click="navbar('1-1')">ERP（企业资源计划）</a></li>
+                                            <li><a @click="navbar('1-2')">MES（制造执行系统）</a></li>
+                                            <li><a @click="navbar('1-3')">WMS（仓库管理系统）</a></li>
+                                            <li><a @click="navbar('1-4')">设备数据采集与分析</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="" :class="{current:setCurrent(2)}"><a @click="navbar(2)">产业协作</a></li>
+                                    <li class="" :class="{current:setCurrent(3)}"><a @click="navbar(3)">服务支持</a></li>
+                                    <li class="dropdown" :class="{current:setCurrent(4)}"><a @click="navbar('4-1')">关于我们</a>
+                                        <ul>
+                                            <li><a @click="navbar('4-1')">平台简介</a></li>
+                                            <li><a @click="navbar('4-2')">服务单位简介</a></li>
+                                            <li><a @click="navbar('4-3')">产品服务架构</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- Main Menu End-->
+
+                        <!--Outer Box-->
+                        <!--<div class="outer-box" style="padding-bottom: 14px;">-->
+                        <!--&lt;!&ndash;<a  class="theme-btn quote-btn" data-toggle="modal" data-target="#schedule-box">Get a Quote <span class="icon"></span></a>&ndash;&gt;-->
+                        <!--<div class="social-icon-one" style="color: #FFFFFF;font-weight: 600;padding-left: 10px;border-left: 2px solid rgba(255,255,255,0.2);">-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-facebook"></span></a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-twitter"></span></a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-skype"></span></a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-linkedin"></span></a></li>&ndash;&gt;-->
+                        <!--<a ><span class="icon fa fa-phone"></span></a><span> &nbsp;189-8979-2655</span>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                    </div>
+                    <!--Nav Outer End-->
+
+                </div>
+            </div>
+        </div>
+
+        <!--Sticky Header-->
+        <div class="sticky-header">
+            <div class="auto-container">
+
+                <div class="outer-container clearfix">
+                    <!--Logo Box-->
+                    <div class="logo-box pull-left" style="padding: 15px 0">
+                        <div class="logo" style="padding: 0;"><a @click="goHome(0)"><img src="./images/wencheng%20logo.png" alt="" style="width: 300px;"></a></div>
+                    </div>
+
+                    <!--Nav Outer-->
+                    <div class="nav-outer clearfix">
+                        <!-- Main Menu -->
+                        <nav class="main-menu">
+                            <div class="navbar-header">
+                                <!-- Toggle Button -->
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+
+                            <div class="navbar-collapse collapse clearfix">
+                                <ul class="navigation clearfix">
+                                    <li :class="{current:setCurrent(0)}"><a @click="navbar(0)">首页</a></li>
+                                    <li class="dropdown" :class="{current:setCurrent(1)}">
+                                        <a @click="navbar('1-1')">企业云管家</a>
+                                        <ul>
+                                            <li><a @click="navbar('1-1')">ERP（企业资源计划）</a></li>
+                                            <li><a @click="navbar('1-2')">MES（制造执行系统）</a></li>
+                                            <li><a @click="navbar('1-3')">WMS（仓库管理系统）</a></li>
+                                            <li><a @click="navbar('1-4')">设备数据采集与分析</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="" :class="{current:setCurrent(2)}"><a @click="navbar(2)">产业协作</a></li>
+                                    <li class="" :class="{current:setCurrent(3)}"><a @click="navbar(3)">服务支持</a></li>
+                                    <li class="dropdown" :class="{current:setCurrent(4)}"><a @click="navbar('4-1')">关于我们</a>
+                                        <ul>
+                                            <li><a @click="navbar('4-1')">平台简介</a></li>
+                                            <li><a @click="navbar('4-2')">服务单位简介</a></li>
+                                            <li><a @click="navbar('4-3')">产品服务架构</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- Main Menu End-->
+
+                        <!--Outer Box-->
+                        <!--<div class="outer-box" style="padding-top: 12px;margin-left: 0;margin-top: 0;">-->
+                        <!--&lt;!&ndash;<a  class="theme-btn quote-btn" data-toggle="modal" data-target="#schedule-box">Get a Quote <span class="icon"></span></a>&ndash;&gt;-->
+                        <!--<div class="social-icon-one" style="color: #000000;font-weight: 600;padding-left: 10px;border-left: 2px solid rgba(255,255,255,0.2);">-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-facebook"></span></a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-twitter"></span></a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-skype"></span></a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a ><span class="fa fa-linkedin"></span></a></li>&ndash;&gt;-->
+                        <!--<a ><span class="icon fa fa-phone"></span></a><span> &nbsp;189-8979-2655</span>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                    </div>
+                    <!--Nav Outer End-->
+
+                </div>
+
+            </div>
+        </div>
+        <!--End Sticky Header-->
+
+    </header>
+    <!--End Main Header -->
+
+    <!--banner-->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- 指示器 -->
+        <!--<ol class="carousel-indicators" v-if="navbarIndex===0">-->
+        <!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>-->
+        <!--<li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
+        <!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
+        <!--<li data-target="#carousel-example-generic" data-slide-to="3"></li>-->
+        <!--</ol>-->
+        <!-- 轮播图片及说明文字 -->
+        <div class="carousel-inner" role="listbox">
+            <!--<template v-if="navbarIndex===0">-->
+            <div class="item active">
+                <a  class="pc_imgBox hidden-xs" :style="{'background-image': 'url('+setBannerContent.src+')'}"></a>
+                <a  class="m_imgBox hidden-lg hidden-md hidden-sm" :style="{'background-image': 'url('+setBannerContent.src+')'}"></a>
+                <div class="bannerTxtView">
+                    <div class="bannerTxtBox">
+                        <div class="bannerTxtBoxBackGround" :class="setBannerTxtBoxShow">
+                            <p class="bannerTxt1" v-text="setBannerContent.txt1"></p>
+                            <p class="bannerTxt2" v-text="setBannerContent.txt2"></p>
+                            <p class="bannerTxt2" v-text="setBannerContent.txt3"></p>
+                            <div><button type="button" class="btn btn-primary customBtnStyle" :class="{'btn-xs':offsetWidth<768}" @click="goSaas">登 录</button></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--<template v-show="navbarIndex==='1-1'">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/home-slide-1_erp.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/home-slide-1_erp.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">适用于中小制造型企业的云ERP</p>-->
+                <!--<p class="bannerTxt2">灵活配置各种业务模式</p>-->
+                <!--<p class="bannerTxt2">企业特有管理流程的定制开发</p>-->
+                <!--<div><button type="button" class="btn btn-primary customBtnStyle" :class="{'btn-xs':offsetWidth<768}" @click="goSaas">登 录</button></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex==='1-2'">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/home-slide-2_mes.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/home-slide-2_mes.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">MES制造执行系统</p>-->
+                <!--<p class="bannerTxt2">生产计划的分解执行</p>-->
+                <!--<p class="bannerTxt2">生产过程的实时监管</p>-->
+                <!--<div><button type="button" class="btn btn-primary customBtnStyle" :class="{'btn-xs':offsetWidth<768}" @click="goSaas">登 录</button></div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex==='1-3'">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/home-slide-3_wms.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/home-slide-3_wms.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">智能仓储管理</p>-->
+                <!--<p class="bannerTxt2">精准的行为监督与控制</p>-->
+                <!--<p class="bannerTxt2">真正实现简单化管理、高效率作业</p>-->
+                <!--<div><button type="button" class="btn btn-primary customBtnStyle" :class="{'btn-xs':offsetWidth<768}" @click="goSaas">登 录</button></div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex==='1-4'">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/home-slide-4_iot.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/home-slide-4_iot.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">机床及设备联网管理</p>-->
+                <!--<p class="bannerTxt2">机床网络化编程管理</p>-->
+                <!--<p class="bannerTxt2">设备状态监控及分析</p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex===2">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/service_04.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/service_04.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">工业服务分享</p>-->
+                <!--<p class="bannerTxt2">需求协作、工业服务资源、工业地图</p>-->
+                <!--<div><button type="button" class="btn btn-primary customBtnStyle" style="padding-left: 12px;padding-right: 12px;" :class="{'btn-xs':offsetWidth<768}" @click="goUmade">了解详情</button></div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex===3">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/service_04.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/service_04.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">服务支持</p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex==='4-1'">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/about us_01.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/about us_01.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">关于我们</p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex==='4-2'">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/about us_01.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/about us_01.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">关于我们</p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+                <!--<template v-show="navbarIndex==='4-3'">-->
+                <!--&lt;!&ndash;<div class="item active">&ndash;&gt;-->
+                <!--<a  class="pc_imgBox hidden-xs" style="background-image: url('images/about us_01.jpg')"></a>-->
+                <!--<a  class="m_imgBox hidden-lg hidden-md hidden-sm"><img src="images/about us_01.jpg" alt=""></a>-->
+                <!--<div class="bannerTxtView">-->
+                <!--&lt;!&ndash;<transition name="banner-txt">&ndash;&gt;-->
+                <!--<div class="bannerTxtBox">-->
+                <!--<p class="bannerTxt1">关于我们</p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--<p class="bannerTxt2"></p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</transition>&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</template>-->
+
+
+            </div>
+            <div class="item" v-show="navbarIndex===0">
+                <a  class="pc_imgBox hidden-xs" style="background-image: url('./images/home-slide-2_mes.jpg')"></a>
+                <a  class="m_imgBox hidden-lg hidden-md hidden-sm" style="background-image: url('./images/home-slide-2_mes.jpg')"></a>
+                <div class="bannerTxtView">
+                    <div class="bannerTxtBox">
+                        <div class="bannerTxtBoxBackGround" :class="setBannerTxtBoxShow">
+                            <p class="bannerTxt1">MES制造执行系统</p>
+                            <p class="bannerTxt2">生产计划的分解执行</p>
+                            <p class="bannerTxt2">生产过程的实时监管</p>
+                            <div><button type="button" class="btn btn-primary customBtnStyle" :class="{'btn-xs':offsetWidth<768}" @click="goSaas">登 录</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item" v-show="navbarIndex===0">
+                <a  class="pc_imgBox hidden-xs" style="background-image: url('./images/home-slide-3_wms.jpg')"></a>
+                <a  class="m_imgBox hidden-lg hidden-md hidden-sm" style="background-image: url('./images/home-slide-3_wms.jpg')"></a>
+                <div class="bannerTxtView">
+                    <div class="bannerTxtBox">
+                        <div class="bannerTxtBoxBackGround" :class="setBannerTxtBoxShow">
+                            <p class="bannerTxt1">智能仓储管理</p>
+                            <p class="bannerTxt2">精准的行为监督与控制</p>
+                            <p class="bannerTxt2">真正实现简单化管理、高效率作业</p>
+                            <div><button type="button" class="btn btn-primary customBtnStyle" :class="{'btn-xs':offsetWidth<768}" @click="goSaas">登 录</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 控制按钮：左右切换 -->
+        <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">-->
+        <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+        <!--</a>-->
+        <!--<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">-->
+        <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+        <!--</a>-->
+    </div>
+    <!--banner end-->
+
+    <!--Market Page Section-->
+    <section class="market-page-section" v-if="navbarIndex===0">
+        <div class="auto-container">
+
+            <div class="row clearfix">
+
+                <!--Market Block-->
+                <div class="market-block-four col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box" @click="navbar('1-1')">
+                        <div class="image">
+                            <a><img src="./images/home_product_1.jpg" alt="" /></a>
+                        </div>
+                        <div class="lower-content">
+                            <div class="icon-box">
+                                <img src="./images/home-logo-erp_blue.png" alt="" style="width: 50px;"/>
+                            </div>
+                            <h3>ERP<br/>适用于制造业</h3>
+                            <div class="text">可标准化布署</div>
+                            <div class="text">可定制化开发</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Market Block-->
+                <div class="market-block-four col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box" @click="navbar('1-2')">
+                        <div class="image">
+                            <a><img src="./images/home_product_2.jpg" alt="" /></a>
+                        </div>
+                        <div class="lower-content">
+                            <div class="icon-box">
+                                <img src="./images/home-logo-mes_blue.png" alt="" style="width: 50px;"/>
+                            </div>
+                            <h3>MES<br/>制造执行系统</h3>
+                            <div class="text">生产计划的分解执行</div>
+                            <div class="text">生产过程的实时监控</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Market Block-->
+                <div class="market-block-four col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box" @click="navbar('1-3')">
+                        <div class="image">
+                            <a><img src="./images/home_product_3.jpg" alt="" /></a>
+                        </div>
+                        <div class="lower-content">
+                            <div class="icon-box">
+                                <img src="./images/home-logo-wms_blue.png" alt="" style="width: 50px;"/>
+                            </div>
+                            <h3>WMS<br/>智能仓储管理</h3>
+                            <div class="text">精准的行为监控与控制</div>
+                            <div class="text">简单管理、高效作业</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Market Block-->
+                <div class="market-block-four col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box" @click="navbar('1-4')">
+                        <div class="image">
+                            <a><img src="./images/home_product_4.jpg" alt="" /></a>
+                        </div>
+                        <div class="lower-content">
+                            <div class="icon-box">
+                                <img src="./images/home-logo-iot_blue.png" alt="" style="width: 50px;"/>
+                            </div>
+                            <h3>IoT<br/>机联网</h3>
+                            <div class="text">网络化编程管理</div>
+                            <div class="text">设备数据采集与分析</div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+    <!--End Market Section Four-->
+
+    <!--Services Section-->
+    <section class="services-section-three" v-if="navbarIndex===0">
+        <div class="auto-container">
+            <!--Sec Title-->
+            <div class="sec-title centered">
+                <h2>我们的服务</h2>
+                <div class="separator"></div>
+            </div>
+            <div class="row clearfix">
+
+                <!--Services Block-->
+                <div class="services-block-three col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <h3><a style="cursor: default;">信息化管理系统</a></h3>
+                        <div class="text">县政府为县内制造型企业免费提供标准版的信息化管理系统，包含了ERP、MES和WMS的主要核心功能…</div>
+                        <a style="display: none;" class="read-more" >Read More <span class="icon flaticon-right-arrow-1"></span></a>
+                    </div>
+                </div>
+
+                <!--Services Block-->
+                <div class="services-block-three col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <h3><a style="cursor: default;">信息化系统定制开发</a></h3>
+                        <div class="text">我们为县内企业提供低成本的ERP、MES、WMS、CRM、SCM等企业管理信息化系统的定制化开发服务…</div>
+                        <a style="display: none;" class="read-more" >Read More <span class="icon flaticon-right-arrow-1"></span></a>
+                    </div>
+                </div>
+
+                <!--Services Block-->
+                <div class="services-block-three col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <h3><a style="cursor: default;">设备数据采集与分析</a></h3>
+                        <div class="text">我们提供从设备联网到编程管理、数据采集、分析、维修、保养等设备管理全流程服务…</div>
+                        <a style="display: none;" class="read-more" >Read More <span class="icon flaticon-right-arrow-1"></span></a>
+                    </div>
+                </div>
+
+                <!--Services Block-->
+                <div class="services-block-three col-md-3 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <h3><a style="cursor: default;">数字化工厂解决方案</a></h3>
+                        <div class="text">提供数字化工厂及车间的项目咨询（免费）、设计、实施及交付的全流程服务…</div>
+                        <a style="display: none;" class="read-more" >Read More <span class="icon flaticon-right-arrow-1"></span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--End Services Section-->
+
+    <section class="product-details" v-if="navbarIndex!==0">
+        <div class="auto-container">
+            <transition name="details-view">
+                <div v-if="setCurrent(1)" class="row clearfix" style="padding: 30px 0;">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <!--企业云管家 start-->
+                        <!--ERP（企业资源计划）-->
+                        <transition name="details">
+                            <div v-if="detailIndex==='1-1'" class="product-details-content">
+                                <h2 class="product-details-content-title">ERP（企业资源计划）</h2>
+
+                                <h3 style="visibility: hidden;">灵活选择产品布署</h3>
+                                <h3 class="product-details-content-view-title">灵活选择产品布署</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="float: left;width: 33.3%;padding: 2%;">
+                                        <div><img src="./images/product_erp_02.jpg" alt=""></div>
+                                        <div style="text-align: center;margin-top: 10px;" class="details-content-text">公有云账户租用</div>
+                                    </div>
+                                    <div style="float: left;width: 33.3%;padding: 2%;">
+                                        <div><img src="./images/product_erp_03.jpg" alt=""></div>
+                                        <div style="text-align: center;margin-top: 10px;" class="details-content-text">企业私有云</div>
+                                    </div>
+                                    <div style="float: left;width: 33.3%;padding: 2%;">
+                                        <div><img src="./images/product_erp_04.jpg" alt=""></div>
+                                        <div style="text-align: center;margin-top: 10px;" class="details-content-text">企业内网布署</div>
+                                    </div>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">全面解决企业管理问题</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="float: left;width: 50%;padding: 2%;">
+                                        <p class="details-content-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;打通企业经营的销售、仓储、采购、生产等经营管理环节，为中、小、微企业提供一站式的管理服务，助力企业提升综合竞争力。</p>
+                                    </div>
+                                    <div style="float: left;width: 50%;padding: 2%;">
+                                        <div><img src="./images/product_erp_01.jpg" alt=""></div>
+                                    </div>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">销售管理</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="float: left;width: 52%;padding: 2%;margin-right: 2%">
+                                        <img src="./images/product_erp_05.png" alt="">
+                                    </div>
+                                    <ul class="details-content">
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 实时监控订单的完成进度;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 多维度分析销售订单的各项数据（可按需求为客户免费定制开发）;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 同一商品支持不同计量模式的转换（例：封箱带的计量单位“卷”、“箱”、“公斤”、“平方”;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 支持先计量后计价的销售模式（例：接单时按“根”，结账时按“吨”）;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 订单的发货及退货管理;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 应收款及开票管理;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> ...</span></li>
+                                    </ul>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">采购管理</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="float: right;width: 52%;padding: 2%;margin-left: 2%">
+                                        <img src="./images/product_erp_06.png" alt="">
+                                    </div>
+                                    <ul class="details-content">
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 可对库存商品进行齐套分析;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 实时监控采购计划及订单的完成进度;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 支持采购收货与仓库入库数据的联动;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 支持采购退货与应付款数据的联动;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 采购收票管理;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> ...</span></li>
+                                    </ul>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">仓库管理</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="float: left;width: 52%;padding: 2%;margin-right: 2%">
+                                        <img src="./images/product_erp_07.png" alt="">
+                                    </div>
+                                    <ul class="details-content">
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 出库、入库、移库、盘点等功能;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 可自定义多层级的仓库（库、区、排、列、层、号）;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 支持虚拟库对其他部门及外部货品进行管理;</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> ...</span></li>
+                                    </ul>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">丰富的报表功能（可按需定制）</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding: 2%;">
+                                            <img src="./images/erp_sheet_01.jpg" alt="">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding: 2%;">
+                                            <img src="./images/erp_sheet_02.jpg" alt="">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding: 2%;">
+                                            <img src="./images/erp_sheet_03.jpg" alt="">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding: 2%;">
+                                            <img src="./images/erp_sheet_04.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </transition>
+                        <!--MES（制造执行系统）-->
+                        <transition name="details">
+                            <div v-if="detailIndex==='1-2'" class="product-details-content">
+                                <h2 class="product-details-content-title">MES（制造执行系统）</h2>
+
+                                <h3 style="visibility: hidden">为企业带来什么</h3>
+                                <h3 class="product-details-content-view-title">为企业带来什么</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <ul class="cellView clearfix">
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_mes_02.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 22px;margin: 10px 0;">生产计划</div>
+                                            <div style="text-align: center;font-size: 16px;">合理安排及调整生产计划，提高整体生产效率。</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_mes_03.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 22px;margin: 10px 0;">生产现场</div>
+                                            <div style="text-align: center;font-size: 16px;">生产过程透明化，保障生产有序进行。</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_mes_04.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 22px;margin: 10px 0;">生产物料</div>
+                                            <div style="text-align: center;font-size: 16px;">严控生产物料的数量、位置及状态，有效降低存货成本。</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%;margin-top: 10%;" src="./images/product_mes_05.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 22px;margin: 10px 0;">制造决策</div>
+                                            <div style="text-align: center;font-size: 16px;">依据真实运营数据，精准驱动理性决策。</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_mes_06.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 22px;margin: 10px 0;">质量追溯</div>
+                                            <div style="text-align: center;font-size: 16px;">实时记录生产全流程质量状态，有效控制缺陷数量。</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_mes_07.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 22px;margin: 10px 0;">协同管理</div>
+                                            <div style="text-align: center;font-size: 16px;">打破各环节的数据黑箱，减少沟通成本，提升运营效率。</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">相关功能</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="padding: 2%;">
+                                        <div><img src="./images/product_mes_01.png" alt=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!--WMS仓库管理系统及定制-->
+                        <transition name="details">
+                            <div v-if="detailIndex==='1-3'" class="product-details-content">
+                                <h2 class="product-details-content-title">WMS（仓库管理系统）</h2>
+
+                                <h3 style="visibility: hidden">产品优势</h3>
+                                <h3 class="product-details-content-view-title">产品优势</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="float: right;width: 40%;padding: 2%;">
+                                        <img src="./images/product_wms_01.png" alt="">
+                                    </div>
+                                    <ul class="details-content">
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 自定义多仓库管理（成品库、原料库、第三方仓库、危险品库…）</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 货位多层级管理（库-区-排-列-层-号）</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 仓库作业智能提示（货品信息、位置信息、数量、批次等）</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 真正做到先进先出，减少企业存货损失</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 丰富的报表分析功能（可按需定制）</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 功能高度灵活、可配置，行业适用性广</span></li>
+                                        <li><span class="glyphicon glyphicon-record"> </span><span class="details-content-text"> 数字化系统管理，有效提升作业效率</span></li>
+                                    </ul>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">系统功能</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <ul class="cellView clearfix">
+                                        <li class="cellBox">
+                                            <div style="width: 25%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 110%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_02.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">入库管理</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 25%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 110%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_03.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">出库管理</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 25%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 110%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_04.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">库存管理</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 25%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 110%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_05.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">任务管理</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 25%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 110%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_06.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">分析报表</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 25%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 110%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_07.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">盘点管理</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">相关功能展示</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="float: left;width: 70%;padding: 2%;">
+                                        <img src="./images/product_wms_17.png" alt="">
+                                    </div>
+                                    <div style="float: left;width: 30%;padding: 1%;">
+                                        <img src="./images/product_wms_18.png" alt="">
+                                    </div>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">适用行业</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <ul class="cellView clearfix">
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_08.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">商品流通</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_09.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">生产制造</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_10.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">电子商务</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_11.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">三方物流</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_12.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">食品餐饮</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_13.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">服装时尚</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_14.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">母婴用品</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_15.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">医药卫生</div>
+                                        </li>
+                                        <li class="cellBox">
+                                            <div style="width: 35%;margin: 0 auto;">
+                                                <div style="width: 100%;height: 0;padding-bottom: 100%;overflow: hidden;margin: 0;position: relative;">
+                                                    <img style="width: 100%" src="./images/product_wms_16.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center;font-size: 18px;margin: 10px 0;">金融质押</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </transition>
+                        <!--设备数据采集与分析-->
+                        <transition name="details">
+                            <div v-if="detailIndex==='1-4'" class="product-details-content">
+                                <h2 class="product-details-content-title">设备数据采集与分析</h2>
+
+                                <h3 style="visibility: hidden">系统简介</h3>
+                                <h3 class="product-details-content-view-title">系统简介</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <p style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过连接设备控制系统的数据接口，实时采集设备的运行、待机、报警、产量等数据，通过移动信号、Wifi或有线局域网，将数据传输到管理系统，经过对数据的清洗、处理、分析，让用户通过APP、WEB、电子看板等方式，以数字、文字、图形、表格等方式查看设备的实时、历史、统计、分析等数据信息。</p>
+                                    <div style="padding: 2%;">
+                                        <div><img src="./images/product_equipment_01.jpg" alt=""></div>
+                                    </div>
+                                </div>
+
+                                <h3 class="product-details-content-view-title">部分功能展示</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="padding: 2%;">
+                                        <div><img src="./images/product_equipment_02.jpg" alt=""></div>
+                                    </div>
+                                    <div style="padding: 20px 0 5px 0;text-align: center;font-size: 20px;">设备产量及工作效率对比</div>
+                                    <div style="padding: 2%;">
+                                        <div><img src="./images/product_equipment_04.png" alt=""></div>
+                                    </div>
+                                    <div style="padding: 20px 0 5px 0;text-align: center;font-size: 20px;">员工与设备效率关联对比</div>
+                                    <div style="padding: 2%;">
+                                        <div><img src="./images/product_equipment_05.png" alt=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!--企业云管家 end-->
+                    </div>
+                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                        <h3 class="product-details-btn-title">企业云管家</h3>
+                        <ul class="product-details-btn-list">
+                            <li class="product-details-btns" :class="{isCurrent:setDetailCurrent('1-1')}"><a @click="changeDetail('1-1')">ERP（企业资源计划）</a></li>
+                            <li class="product-details-btns" :class="{isCurrent:setDetailCurrent('1-2')}"><a @click="changeDetail('1-2')">MES（制造执行系统）</a></li>
+                            <li class="product-details-btns" :class="{isCurrent:setDetailCurrent('1-3')}"><a @click="changeDetail('1-3')">WMS（仓库管理系统）</a></li>
+                            <li class="product-details-btns" :class="{isCurrent:setDetailCurrent('1-4')}"><a @click="changeDetail('1-4')">设备数据采集与分析</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </transition>
+
+            <transition name="details-view">
+                <div v-if="setCurrent(2)" class="row clearfix" style="padding: 30px 0;">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!--产业协作 start-->
+                        <!--企业运营管理工业云平台-->
+                        <transition name="details">
+                            <div v-if="detailIndex===2" class="product-details-content">
+                                <h2 class="product-details-content-title">产业协作</h2>
+                                <div class="clearfix product-details-content-view-detail hidden-xs">
+                                    <div style="padding: 2%;" class="clearfix">
+                                        <div style="float: left;width: 33.3%;">
+                                            <div style="position: relative">
+                                                <img style="width: 100%;" src="./images/corporation_01.jpg" alt="">
+                                                <h3 class="tagTitleStyle">需求协作</h3>
+                                            </div>
+                                            <div style="background-color:rgb(0,176,80);padding: 5%;height: 300px;">
+                                                <p :style="setServerStyle" style="color: #ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需求方在平台上发布需求，服务方承接需求，进行在线报价和沟通，最后确认订单。</p>
+                                            </div>
+                                        </div>
+                                        <div style="float: left;width: 33.3%;">
+                                            <div style="position: relative">
+                                                <img style="width: 100%;" src="./images/corporation_02.jpg" alt="">
+                                                <h3 class="tagTitleStyle">工业服务资源</h3>
+                                            </div>
+                                            <div style="background-color:rgb(0,112,192);padding: 5%;height: 300px;">
+                                                <p :style="setServerStyle" style="color: #ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;企业在平台发布共享制造资源、制造能力、仪器设备和制造服务等项目，平台为企业提供展示、推广与业务承接机会，协助需求企业匹配合格服务商。</p>
+                                            </div>
+                                        </div>
+                                        <div style="float: left;width: 33.3%;">
+                                            <div style="position: relative">
+                                                <img style="width: 100%;" src="./images/corporation_03.jpg" alt="">
+                                                <h3 class="tagTitleStyle">工业地图</h3>
+                                            </div>
+                                            <div style="background-color:rgb(255,255,0);padding: 5%;height: 300px;">
+                                                <p :style="setServerStyle" style="color: #000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工业企业、服务资源和服务项目在地图上进行叠加，建立工业服务地图，实现基于工业地图的搜索和资源配套。需求方可通过地图快速查找本地的制造企业和专业服务商，并在地图上进行呈现，推动本地化的业务配套和产业协作。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix product-details-content-view-detail hidden-sm hidden-md hidden-lg">
+                                    <div style="padding: 2%;" class="clearfix">
+                                        <div style="">
+                                            <div style="position: relative">
+                                                <img style="width: 100%;" src="./images/corporation_01.jpg" alt="">
+                                                <h3 class="tagTitleStyle">需求协作</h3>
+                                            </div>
+                                            <div style="background-color:rgb(0,176,80);padding: 5%;height: 150px;">
+                                                <p :style="setServerStyle" style="color: #ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需求方在平台上发布需求，服务方承接需求，进行在线报价和沟通，最后确认订单。</p>
+                                            </div>
+                                        </div>
+                                        <div style="">
+                                            <div style="position: relative">
+                                                <img style="width: 100%;" src="./images/corporation_02.jpg" alt="">
+                                                <div class="tagTitleStyle">工业服务资源</div>
+                                            </div>
+                                            <div style="background-color:rgb(0,112,192);padding: 5%;height: 150px;">
+                                                <p :style="setServerStyle" style="color: #ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;企业在平台发布共享制造资源、制造能力、仪器设备和制造服务等项目，平台为企业提供展示、推广与业务承接机会，协助需求企业匹配合格服务商。</p>
+                                            </div>
+                                        </div>
+                                        <div style="">
+                                            <div style="position: relative">
+                                                <img style="width: 100%;" src="./images/corporation_03.jpg" alt="">
+                                                <h3 class="tagTitleStyle">工业地图</h3>
+                                            </div>
+                                            <div style="background-color:rgb(255,255,0);padding: 5%;height: 150px;">
+                                                <p :style="setServerStyle" style="color: #000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工业企业、服务资源和服务项目在地图上进行叠加，建立工业服务地图，实现基于工业地图的搜索和资源配套。需求方可通过地图快速查找本地的制造企业和专业服务商，并在地图上进行呈现，推动本地化的业务配套和产业协作。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!--服务支持 end-->
+                    </div>
+                </div>
+            </transition>
+            <transition name="details-view">
+                <div v-if="setCurrent(3)" class="row clearfix" style="padding: 30px 0;">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <!--服务支持 start-->
+                        <!--企业运营管理工业云平台-->
+                        <transition name="details">
+                            <div v-if="detailIndex===3" class="product-details-content">
+                                <h2 class="product-details-content-title">服务支持</h2>
+
+                                <!--<h3 style="visibility: hidden;">服务支持</h3>-->
+                                <!--<h3 class="product-details-content-view-title" style="visibility: hidden;">服务支持</h3>-->
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="padding: 2%;" class="clearfix">
+                                        <div style="float: left;width: 33.3%;">
+                                            <img style="width: 100%;" src="./images/service_01.jpg" alt="">
+                                            <div style="background-color:rgb(0,176,80);padding: 5%;height: 220px;">
+                                                <h3 style="text-align: center;font-size: 20px;color: #ffffff;margin-bottom: 20px;">技术咨询</h3>
+                                                <p :style="setServerStyle" style="color: #ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为企业提供免费的智能制造转型升级的诊断、评估及咨询服务。</p>
+                                            </div>
+                                        </div>
+                                        <div style="float: left;width: 33.3%;">
+                                            <img style="width: 100%;" src="./images/service_02.jpg" alt="">
+                                            <div style="background-color:rgb(0,112,192);padding: 5%;height: 220px;">
+                                                <h3 style="text-align: center;font-size: 20px;color: #ffffff;margin-bottom: 20px;">产品服务</h3>
+                                                <div :style="setServerStyle" style="text-align: center;color: #ffffff">免费培训</div>
+                                                <div :style="setServerStyle" style="text-align: center;color: #ffffff">版本更新</div>
+                                                <div :style="setServerStyle" style="text-align: center;color: #ffffff">需求反馈</div>
+                                                <div :style="setServerStyle" style="text-align: center;color: #ffffff">样板调研</div>
+                                            </div>
+                                        </div>
+                                        <div style="float: left;width: 33.3%;">
+                                            <img style="width: 100%;" src="./images/service_03.jpg" alt="">
+                                            <div style="background-color:rgb(255,255,0);padding: 5%;height: 220px;">
+                                                <h3 style="text-align: center;font-size: 20px;color: #000000;margin-bottom: 20px;">售后服务</h3>
+                                                <div :style="setServerStyle" style="text-align: center;color: #000000">在线服务</div>
+                                                <div :style="setServerStyle" style="text-align: center;color: #000000">热线支持</div>
+                                                <div :style="setServerStyle" style="text-align: center;color: #000000">远程协助</div>
+                                                <div :style="setServerStyle" style="text-align: center;color: #000000">现场服务</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!--服务支持 end-->
+                    </div>
+                </div>
+            </transition>
+            <transition name="details-view">
+                <div v-if="setCurrent(4)" class="row clearfix" style="padding: 30px 0;">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <!--关于我们 start-->
+                        <!--平台简介-->
+                        <transition name="details">
+                            <div v-if="detailIndex==='4-1'" class="product-details-content">
+                                <h2 class="product-details-content-title">平台简介</h2>
+                                <!--<h3 style="visibility: hidden;">企业简介</h3>-->
+                                <h3 class="product-details-content-view-title" style="visibility: hidden;">平台简介</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <img src="images/Platform%20introduction_1.png" align="right" width="45%" style="margin-left: 10px;">
+                                    <p style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文成县企业云管家是文成县政府与顶智智能技术有限公司联合打造的一款专为中小制造型企业开发的基于云端的企业运营管理解决方案。研发团队通过对温州超过300家中小制造型企业的走访，在深入了解了企业的痛点和需求的基础上，应用工业互联网、移动互联网、大数据、云计算等先进技术手段，给企业提供了覆盖中小制造业企业全业务流程、基于移动管理的数字云工厂整体解决方案，为企业的数字化、网络化、智能化转型升级提供了有力的支持。</p>
+                                </div>
+                                <div class="clearfix product-details-content-view-detail" style="padding: 25px 0">
+                                    <img src="./images/Platform%20introduction_2.png" align="left" width="45%" style="margin-right: 20px;">
+                                    <p style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该工业云平台采用了基于云端的SaaS化部署、利用移动互联网采集数据，极大降低了企业的实施门槛，大幅减少了企业的硬件投入；通过大数据和自主学习，系统将主动适应企业的流程变化；丰富的多维度数据交叉分析及展示功能，让企业管理层基于真实数据快速作出有效决策；随着对企业运营数据的积累，系统将逐步为企业提供智能化的任务分配及管理，并可为政府提供区域经济的大数据分析。</p>
+                                </div>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <img src="./images/Platform%20introduction_3.png" align="right" width="45%" style="margin-left: 10px;">
+                                    <p style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该平台让企业经营管理全流程上云，包括：销售、生产计划、生产过程、质量监管、仓储、采购等功能，解决了长期困扰企业的订单进度不透明、生产协同性差、生产数据时效性差、质量追溯困难、仓库管理效率低等实际共性问题，为企业的持续降本增效、转型升级提供了有力支撑。</p>
+                                </div>
+                            </div>
+                        </transition>
+                        <!--服务单位简介-->
+                        <transition name="details">
+                            <div v-if="detailIndex==='4-2'" class="product-details-content">
+                                <h2 class="product-details-content-title">服务单位简介</h2>
+
+                                <!--<h3 style="visibility: hidden;">产品架构</h3>-->
+                                <h3 class="product-details-content-view-title" style="visibility: hidden;">服务单位简介</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="padding: 2%;">
+                                        <p style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文成县企业云管家由温州市文成县政府与浙江顶智智能技术有限公司联合打造，由浙江顶智智能技术有限公司提供技术服务支持。</p>
+                                        <p style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浙江顶智智能技术公司公司主要从事基于制造业数据采集的制造信息化系统研发，专注于制造业信息互联与数据应用，利用基于采集的数据进行数据建模、数据分析，为制造型企业提供数字化工厂整体规划与实施，为企业实现数字化、网络化、智能化转型升级提供有利支持。</p>
+                                        <p style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该公司专注于生产设备联网、数据采集、车间级及企业级信息化、数字化系统研发与整体解决方案的设计实施，拥有完整的数字化工厂解决方案与产品体系。依托丰富的行业经验与专业的项目实施团队，顶智为传统制造型的全面数字化转型提供助力。</p>
+                                        <div>
+                                            <div class="widgets-section">
+                                                <div class="row clearfix" style="display:none;">
+                                                    <div class="column col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="logo">
+                                                                <a class="logoStyle">文成县企业云管家</a>
+                                                                <p style="color: #ffffff;padding-top: 10px;">本平台由温州市文成县政府与浙江顶智智能技术有限公司联合打造，由浙江顶智智能技术有限公司提供技术服务支持。</p>
+                                                            </div>
+                                                            <div class="widget-content">
+                                                                <a class="deecoopLink" @click="goDeecoop">顶智智能技术有限公司</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row clearfix">
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content" v-auto-height>
+                                                                <div class="text" style="font-size: 20px;font-weight: 600;">浙江运营中心</div>
+                                                                <div class="text" style="margin: 5px 0;">浙江省温州市瓯海区朝阳新街225号<br/>华中科技大学温州先进制造技术研究院4F</div>
+                                                                <div class="text">电话：0577-86005011</div>
+                                                                <div class="text" style="padding-bottom: 10px;"><span style="visibility: hidden">电话：</span>18989792655</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content" :style="{height: columnHeight + 'px'}">
+                                                                <div class="text" style="font-size: 20px;font-weight: 600;">上海办事处</div>
+                                                                <div class="text" style="margin: 5px 0;">上海市杨浦区黄兴路1778号东方蓝海国际广场1栋16F</div>
+                                                                <div class="text" style="padding-bottom: 10px;">电话：13601660655</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                                <div class="text" style="font-size: 20px;font-weight: 600;">南京办事处</div>
+                                                                <div class="text" style="margin: 5px 0;">南京市秦淮区秦虹小区康安里9栋</div>
+                                                                <div class="text" style="padding-bottom: 10px;">电话：13770349882</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                                <div class="text" style="font-size: 20px;font-weight: 600;">华中运营中心</div>
+                                                                <div class="text" style="margin: 5px 0;">武汉市洪山区光谷大道3号未来之光7栋510室</div>
+                                                                <div class="text" style="padding-bottom: 10px;">电话：18989792655</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                                <div class="text" style="font-size: 20px;font-weight: 600;">实验展示中心</div>
+                                                                <div class="text" style="padding-bottom: 10px;">华中科技大学&nbsp;&nbsp;自动化学院<br/>武汉市洪山区珞喻路1037号</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row clearfix hidden-xs hidden-sm" style="display: none">
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>0577-86005011</div>
+                                                                <div class="text"><span style="visibility: hidden">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span></span>18989792655</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>13601660655</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>13770349882</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>18989792655</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--Column-->
+                                                    <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="footer-widget logo-widget">
+                                                            <div class="widget-content">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!--产品架构-->
+                        <transition name="details">
+                            <div v-if="detailIndex==='4-3'" class="product-details-content">
+                                <h2 class="product-details-content-title">产品架构</h2>
+
+                                <!--<h3 style="visibility: hidden;">产品架构</h3>-->
+                                <h3 class="product-details-content-view-title" style="visibility: hidden;">产品架构</h3>
+                                <div class="clearfix product-details-content-view-detail">
+                                    <div style="padding: 2%;">
+                                        <img src="./images/tech_01.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                        <!--关于我们 end-->
+                    </div>
+                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                        <h3 class="product-details-btn-title">关于我们</h3>
+                        <ul class="product-details-btn-list">
+                            <li class="product-details-btns" :class="{isCurrent:setDetailCurrent('4-1')}"><a @click="changeDetail('4-1')">平台简介</a></li>
+                            <li class="product-details-btns" :class="{isCurrent:setDetailCurrent('4-2')}"><a @click="changeDetail('4-2')">服务单位简介</a></li>
+                            <li class="product-details-btns" :class="{isCurrent:setDetailCurrent('4-3')}"><a @click="changeDetail('4-3')">产品服务架构</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </transition>
+        </div>
+        <section class="services-section-three" style="padding-top: 40px;" v-if="setCurrent(1)">
+            <div class="auto-container">
+
+
+
+
+
+                <!--Sec Title-->
+                <div class="sec-title centered" style="margin-bottom: 10px">
+                    <h2>专业化的定制服务流程</h2>
+                    <!--<div class="separator"></div>-->
+                </div>
+                <div class="row clearfix product-details-content-view-detail">
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="padding: 2%;">
+                        <div style="text-align: center;font-size: 3em;padding: 10px 0;">01</div>
+                        <div style="text-align: center;font-size: 16px;">项目咨询</div>
+                        <div style="text-align: center;font-size: 16px;">需求分析</div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="padding: 2%;">
+                        <div style="text-align: center;font-size: 3em;padding: 10px 0;">02</div>
+                        <div style="text-align: center;font-size: 16px;">上门拜访</div>
+                        <div style="text-align: center;font-size: 16px;">沟通需求</div>
+                        <div style="text-align: center;font-size: 16px;">调研现状</div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="padding: 2%;">
+                        <div style="text-align: center;font-size: 3em;padding: 10px 0;">03</div>
+                        <div style="text-align: center;font-size: 16px;">方案制定</div>
+                        <div style="text-align: center;font-size: 16px;">沟通演示</div>
+                        <div style="text-align: center;font-size: 16px;">方案调整</div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="padding: 2%;">
+                        <div style="text-align: center;font-size: 3em;padding: 10px 0;">04</div>
+                        <div style="text-align: center;font-size: 16px;">项目报价</div>
+                        <div style="text-align: center;font-size: 16px;">商务洽谈</div>
+                        <div style="text-align: center;font-size: 16px;">合同签订</div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="padding: 2%;">
+                        <div style="text-align: center;font-size: 3em;padding: 10px 0;">05</div>
+                        <div style="text-align: center;font-size: 16px;">项目实施</div>
+                        <div style="text-align: center;font-size: 16px;">项目验收</div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2" style="padding: 2%;">
+                        <div style="text-align: center;font-size: 3em;padding: 10px 0;">06</div>
+                        <div style="text-align: center;font-size: 16px;">售后服务</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!--Main Footer-->
+    <footer class="main-footer" :class="{fixedFooter:isFooterFixed}">
+        <div class="auto-container" style="display: none">
+            <!--Widgets Section-->
+            <div class="widgets-section">
+                <div class="row clearfix">
+                    <div class="column col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="logo">
+                                <a class="logoStyle">文成县企业云管家</a>
+                                <p style="color: #ffffff;padding-top: 10px;">本平台由温州市文成县政府与浙江顶智智能技术有限公司联合打造，由浙江顶智智能技术有限公司提供技术服务支持。</p>
+                            </div>
+                            <div class="widget-content">
+                                <a class="deecoopLink" @click="goDeecoop">顶智智能技术有限公司</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+
+                    <!--Column-->
+                    <div class="column col-md-3 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">浙江运营中心</div>
+                                <div class="text">浙江省温州市瓯海区朝阳新街225号<br/>华中科技大学温州先进制造技术研究院4F</div>
+                                <div class="text hidden-md hidden-lg">电话：0577-86005011</div>
+                                <div class="text hidden-md hidden-lg"><span style="visibility: hidden">电话：</span>18989792655</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--Column-->
+                    <div class="column col-md-2 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">上海办事处</div>
+                                <div class="text">上海市杨浦区黄兴路1778号东方蓝海国际广场1栋16F</div>
+                                <div class="text hidden-md hidden-lg">电话：13601660655</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-md-2 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">南京办事处</div>
+                                <div class="text">南京市秦淮区秦虹小区康安里9栋</div>
+                                <div class="text hidden-md hidden-lg">电话：13770349882</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-md-2 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">华中运营中心</div>
+                                <div class="text">武汉市洪山区光谷大道3号未来之光7栋510室</div>
+                                <div class="text hidden-md hidden-lg">电话：18989792655</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-md-3 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">实验展示中心</div>
+                                <div class="text">华中科技大学&nbsp;&nbsp;自动化学院<br/>武汉市洪山区珞喻路1037号</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row clearfix hidden-xs hidden-sm">
+
+                    <!--Column-->
+                    <div class="column col-md-3 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>0577-86005011</div>
+                                <div class="text"><span style="visibility: hidden">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span></span>18989792655</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--Column-->
+                    <div class="column col-md-2 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>13601660655</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-md-2 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>13770349882</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-md-2 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                                <div class="text">电话<span class="hidden-lg hidden-sm hidden-xs">:</span><span class="hidden-md">：</span>18989792655</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-md-3 col-sm-6 col-xs-12">
+                        <div class="footer-widget logo-widget">
+                            <div class="widget-content">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="padding-top: 0">
+            <div class="auto-container">
+                <div class="row clearfix" style="display: none;">
+
+                    <!--Title Column-->
+                    <div class="title-column col-md-5 col-sm-12 col-xs-12">
+                        <div class="text"><span class="icon flaticon-rss-updates-subscription"></span> Keep up to date, Get latest updates, news and special offers in your inbox...</div>
+                    </div>
+                    <!--Subscribe Column-->
+                    <div class="subscribe-column col-md-7 col-sm-12 col-xs-12">
+                        <div class="subscribe-form">
+                            <form method="post" action="contact.html">
+                                <div class="form-group">
+                                    <input type="email" name="email" value="" placeholder="Your E-mail Address..." required="">
+                                    <button type="submit" class="theme-btn">Subscribe Us <span class="flaticon-right-arrow-1"></span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="copyright" style="border-top: none;" :style="{'margin-top':navbarIndex===0?'0':'0'}">
+                    <div>
+                        <div style="display: inline-block;">
+                            <p style="float:left;height:20px;line-height:20px;margin: 0">浙江顶智智能技术有限公司</p>
+                        </div>
+                        <div style="display: inline-block;margin: 0 20px;">
+                            <!--<p style="float:left;height:20px;line-height:20px;margin: 0; color:#939393;">浙ICP备17012753号-4</p>-->
+                            <a target="_blank" href="http://www.beian.miit.gov.cn/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin: 0; color:#939393;">浙ICP备17012753号-4</p></a>
+                        </div>
+                        <div style="display: inline-block;">
+                            <!--<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030402000770" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="./images/gongan.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">浙公网安备 33030402000770号</p></a>-->
+                            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030402000782" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="./images/gongan.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">浙公网安备 33030402000782号</p></a>
+                        </div>
+                    </div>
+                    <div>Copyright © 2019 <a @click="goDeecoop">Deecoop Technologies</a> All rights reserved.</div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!--End pagewrapper-->
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fa fa-angle-double-up"></span></div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/knob.js"></script>
+<script src="js/appear.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            inBanner: true,
+            bannerTime: 5000,
+            navbarIndex: 0,
+            detailIndex: '',
+            offsetWidth: 0,
+            isFooterFixed: false,
+            bannerContent: {
+                '0': {
+                    src: './images/home-slide-1_erp.jpg',
+                    txt1:'适用于中小制造型企业的云ERP',
+                    txt2:'灵活配置各种业务模式',
+                    txt3:'特有管理流程的定制开发',
+                },
+                '1-1': {
+                    src: './images/home-slide-1_erp.jpg',
+                    txt1:'适用于中小制造型企业的云ERP',
+                    txt2:'灵活配置各种业务模式',
+                    txt3:'企业特有管理流程的定制开发',
+                },
+                '1-2': {
+                    src: './images/home-slide-2_mes.jpg',
+                    txt1:'MES制造执行系统',
+                    txt2:'生产计划的分解执行',
+                    txt3:'生产过程的实时监管',
+                },
+                '1-3': {
+                    src: './images/home-slide-3_wms.jpg',
+                    txt1:'智能仓储管理',
+                    txt2:'精准的行为监督与控制',
+                    txt3:'真正实现简单化管理、高效率作业',
+                },
+                '1-4': {
+                    src: './images/home-slide-1_erp.jpg',
+                    txt1:'机床及设备联网管理',
+                    txt2:'机床网络化编程管理',
+                    txt3:'设备状态监控及分析',
+                },
+                '2': {
+                    src: './images/home-slide-2_mes.jpg',
+                    txt1:'工业服务分享',
+                    txt2:'需求协作、工业服务资源、工业地图',
+                    txt3:'',
+                },
+                '3': {
+                    src: './images/home-slide-1_erp.jpg',
+                    txt1:'服务支持',
+                    txt2:'',
+                    txt3:'',
+                },
+                '4-1': {
+                    src: './images/about us_01.jpg',
+                    txt1:'关于我们',
+                    txt2:'',
+                    txt3:'',
+                },
+                '4-2': {
+                    src: './images/about us_01.jpg',
+                    txt1:'关于我们',
+                    txt2:'',
+                    txt3:'',
+                },
+                '4-3': {
+                    src: './images/about us_01.jpg',
+                    txt1:'关于我们',
+                    txt2:'',
+                    txt3:'',
+                },
+            },
+            columnHeight: 0,
+        },
+        directives:{
+            'auto-height':{
+                inserted:function(el, binding, vnode) {
+                    const that = vnode.context
+                    that.columnHeight = el.offsetHeight
+                }
+            }
+        },
+        computed:{
+            setServerStyle:function () {
+                if(this.offsetWidth>1366){
+                    return {'font-size': '20px'}
+                }else if(this.offsetWidth>=1200){
+                    return {'font-size': '18px'}
+                }else if(this.offsetWidth>=992){
+                    return {'font-size': '16px'}
+                }else if(this.offsetWidth>=768){
+                    return {'font-size': '14px'}
+                }else {
+                    return {'font-size': '12px'}
+                }
+            },
+            setBannerContent: function(){
+                // console.log(this.bannerContent[this.navbarIndex + ''])
+                return this.bannerContent[this.navbarIndex + '']
+            },
+            setBannerTxtBoxShow: function(){
+                if(this.navbarIndex) return 'isShow'
+                return this.inBanner?'isShow':'noShow'
+            },
+        },
+        created:function () {
+            this.offsetWidth = document.documentElement.offsetWidth || document.body.offsetWidth;
+            //console.log(this.offsetWidth,document.documentElement)
+        },
+        mounted:function(){
+            var that = this
+            this.checkFixedFooter()
+            $(function () {
+                var bannerEl = $('#carousel-example-generic')
+                bannerEl.carousel({
+                    interval:that.bannerTime,
+                    wrap: true
+                });
+                bannerEl.on('slide.bs.carousel', function () {
+                    that.inBanner = false
+                })
+                bannerEl.on('slid.bs.carousel', function () {
+                    that.inBanner = true
+                })
+            })
+
+        },
+        methods: {
+            goSaas:function(){
+                if(this.navbarIndex == 2){
+                    this.goUmade()
+                    return
+                }
+                window.open("http://web.dongtoucloud.cn/");
+            },
+            goDeecoop:function(){
+                window.open("http://www.deecoop.cn/");
+            },
+            goUmade:function () {
+                window.open("http://www.umade.com.cn/");
+            },
+            goHome:function(index){
+                var that = this
+                if(this.navbarIndex === 0){
+                    this.$nextTick(function () {
+                        $(".scroll-to-target").click()
+                    })
+                }else {
+                    this.detailIndex = ''
+                    this.navbarIndex = index
+                    this.$nextTick(function () {
+                        $('#carousel-example-generic').carousel({
+                            interval:that.bannerTime,
+                            wrap: true
+                        });
+                    })
+                }
+            },
+            navbar:function (index) {
+                var that = this,bannerEl = $('#carousel-example-generic');
+                // console.log($('#carousel-example-generic'),index,this.navbarIndex)
+                //$('#carousel-example-generic').carousel('pause');
+                // console.log(index,'navbar')
+                this.detailIndex = ''
+                if(index === 0){
+                    this.$nextTick(function () {
+                        bannerEl.carousel({
+                            interval:that.bannerTime,
+                            wrap: true
+                        });
+                    })
+                }else {
+                    bannerEl.carousel('pause');
+                    this.detailIndex = index
+                }
+                // this.navbarIndex = index
+                // this.checkFixedFooter()
+                setTimeout(function () {
+                    that.navbarIndex = index
+                    // console.log($('#carousel-example-generic'),this.navbarIndex)
+                    // $(".scroll-to-target").click()
+                    that.checkFixedFooter()
+                })
+
+            },
+            setCurrent:function (index) {
+                if(typeof this.navbarIndex === 'number'){
+                    return this.navbarIndex === index
+                }
+                if(typeof this.navbarIndex === 'string'){
+                    return index === parseInt(this.navbarIndex.split('-')[0])
+                }
+                return false
+            },
+            changeDetail:function (index) {
+                // console.log(index,'changeDetail')
+                this.detailIndex = index
+                this.navbarIndex = index
+                this.checkFixedFooter()
+            },
+            setDetailCurrent:function (index) {
+                return this.detailIndex === index
+            },
+            checkFixedFooter:function(){
+                var that = this
+                that.$nextTick(function () {
+                    setTimeout(function () {
+                        var bodyEl = document.getElementsByClassName('page-wrapper')
+                        if(bodyEl && bodyEl[0]){
+                            var clientHeight = document.documentElement.clientHeight || 0
+                            //console.log(bodyEl[0].offsetHeight , clientHeight)
+                            that.isFooterFixed = bodyEl[0].offsetHeight < clientHeight
+                        }
+                    },100)
+                })
+            },
+        },
+        watch:{
+            navbarIndex:function () {
+                $(".scroll-to-target").click()
+                if(this.navbarIndex !== 0){
+                    this.inBanner = false
+                    var els = $('.carousel-inner>.item')
+                    els.removeClass('active')
+                    els.first().addClass('active')
+                    // console.log(els)
+                }else {
+                    this.inBanner = true
+                }
+            }
+        },
+    })
+
+</script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
